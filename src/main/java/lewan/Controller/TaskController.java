@@ -1,7 +1,9 @@
 package lewan.Controller;
 
 import lewan.dao.TaskDAO;
+import lewan.dao.TaskHistoryDAO;
 import lewan.entity.Task;
+import lewan.entity.TaskHistory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +17,24 @@ public class TaskController {
     @Autowired
     private TaskDAO taskDAO;
 
+    @Autowired
+    private TaskHistoryDAO taskHistoryDAO;
+
     @RequestMapping("/tasks")
     public String getDays(Model model){
 
         List<Task> taskList =taskDAO.getTasks();
 
         model.addAttribute("tasks",taskList);
+
+        List<TaskHistory> taskHistoryList = taskHistoryDAO.getTasks();
+        model.addAttribute("tasksHistory",taskHistoryList);
+
+        for (TaskHistory temptask: taskHistoryList
+             ) {
+            System.out.println(temptask.toString());
+
+        }
 
         return "tasks";
     }

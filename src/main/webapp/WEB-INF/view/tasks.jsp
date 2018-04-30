@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Lewan
@@ -7,6 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="date" class="java.util.Date" />
 <html>
 <head>
     <link type="text/css"
@@ -47,6 +49,32 @@
             |
             <a href="${deleteLink}"> Done!</a>
         </td>
+    </tr>
+
+    </c:forEach>
+
+</table>
+<br><br>
+<br><br>
+<br><br>
+<table class="flatTable">
+    <tr class="titleTr">
+        <td class="titleTd">You finished:</td>
+        <td colspan="4"></td>
+    </tr>
+    <tr class="headingTr">
+        <td>DATE</td>
+        <td>NAME</td>
+        <td>ESTIMATED TIME</td>
+        <td>DESCRIPTION</td>
+
+
+        <c:forEach var="tempTaskHistory" items="${tasksHistory}">
+    <tr>
+        <td>${tempTaskHistory.executionDate}</td>
+        <td>${tempTaskHistory.taskName}</td>
+        <td>${tempTaskHistory.estimatedTime}</td>
+        <td>${tempTaskHistory.description}</td>
     </tr>
 
     </c:forEach>
