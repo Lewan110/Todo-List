@@ -29,7 +29,7 @@ public class TaskHistoryImpl implements TaskHistoryDAO {
 
         Session currentSession = sessionFactory.getCurrentSession();
         Query<TaskHistory> query =
-                currentSession.createQuery("from TaskHistory", TaskHistory.class);
+                currentSession.createQuery("from TaskHistory where executionDate=current_date()", TaskHistory.class);
 
 
         List<TaskHistory> taskHistoryList = query.getResultList();

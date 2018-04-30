@@ -59,7 +59,7 @@
 <br><br>
 <table class="flatTable">
     <tr class="titleTr">
-        <td class="titleTd">You finished:</td>
+        <td class="titleTd">You finished today:</td>
         <td colspan="4"></td>
     </tr>
     <tr class="headingTr">
@@ -69,15 +69,22 @@
         <td>DESCRIPTION</td>
 
 
+        <c:set var="total" value="${0}"/>
         <c:forEach var="tempTaskHistory" items="${tasksHistory}">
+        <c:set var="total" value="${total + tempTaskHistory.estimatedTime}" />
     <tr>
         <td>${tempTaskHistory.executionDate}</td>
         <td>${tempTaskHistory.taskName}</td>
         <td>${tempTaskHistory.estimatedTime}</td>
         <td>${tempTaskHistory.description}</td>
     </tr>
-
     </c:forEach>
+    <tr>
+    </tr>
+    <tr style="outline: thin solid">
+        <td colspan="2">Productive time today: </td>
+        <td>${total}</td>
+    </tr>
 
 </table>
 </body>
