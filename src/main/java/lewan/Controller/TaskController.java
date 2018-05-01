@@ -36,7 +36,7 @@ public class TaskController {
 
         }
 
-        return "/WEB-INF/tasks.jsp";
+        return "tasks";
     }
     @GetMapping("/AddTaskForm")
     public String addTaskForm(Model model){
